@@ -2,7 +2,7 @@ class Hyperkey < Formula
   desc "Turn caps lock into a hyper key (shift+control+option+command)"
   homepage "https://github.com/drosam/hyperkey"
   url "https://github.com/drosam/hyperkey/releases/download/v0.1.0/hyperkey-0.1.0.zip"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "63d8f5931b6c741e69ffb19905585a18059ecc748f1f37d86247f8fd828498cf"
   license "MIT"
 
   depends_on macos: :ventura
