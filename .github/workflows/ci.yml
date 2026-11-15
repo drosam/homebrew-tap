@@ -24,6 +24,7 @@ jobs:
         run: |
           mkdir -p "$(brew --repository)/Library/Taps/drosam"
           ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/drosam/homebrew-tap"
+          brew trust drosam/tap
 
       - name: Audit
         run: brew audit --strict --online drosam/tap/hyperkey
