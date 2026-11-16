@@ -3,7 +3,7 @@
 # (tap GitHub App token, see CONTRIBUTING.md).
 cask "gitpulse" do
   version "0.1.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "b1cad63d94a2ec4d7578719efad30ecc75ca7ff25e34ecf8211b9021b4e9f66d"
 
   url "https://github.com/drosam/gitpulse/releases/download/v#{version}/GitPulse-#{version}.zip"
   name "GitPulse"
