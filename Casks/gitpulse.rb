@@ -1,0 +1,27 @@
+# Reference copy of Casks/gitpulse.rb in drosam/homebrew-tap.
+# The release workflow rewrites `version` and `sha256` in the tap on each stable tag
+# (tap GitHub App token, see CONTRIBUTING.md).
+cask "gitpulse" do
+  version "0.1.0"
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+
+  url "https://github.com/drosam/gitpulse/releases/download/v#{version}/GitPulse-#{version}.zip"
+  name "GitPulse"
+  desc "Menu bar app that tracks your GitHub pull requests and review requests"
+  homepage "https://github.com/drosam/gitpulse"
+
+  depends_on macos: ">= :sequoia"
+
+  app "GitPulse.app"
+
+  # Unsigned build: drop the quarantine flag so Gatekeeper doesn't block launch.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/GitPulse.app"]
+  end
+
+  zap trash: [
+    "~/Library/Preferences/dev.davidrosa.gitpulse.plist",
+    "~/Library/Saved Application State/dev.davidrosa.gitpulse.savedState",
+  ]
+end
