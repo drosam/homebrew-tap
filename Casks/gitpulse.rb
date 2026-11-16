@@ -10,14 +10,16 @@ cask "gitpulse" do
   desc "Menu bar app that tracks your GitHub pull requests and review requests"
   homepage "https://github.com/drosam/gitpulse"
 
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "GitPulse.app"
 
   # Unsigned build: drop the quarantine flag so Gatekeeper doesn't block launch.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/GitPulse.app"]
+  # Default appdir only; a custom --appdir keeps quarantine instead of failing the install.
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-dr", "com.apple.quarantine", "/Applications/GitPulse.app"],
+        must_succeed: false
   end
 
   zap trash: [
